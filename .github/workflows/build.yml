@@ -13,10 +13,12 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install Rust
         run: rustup update stable
-      - name: Prepare Package
+      - name: Prepare Environment
         run: |
           rustup target add x86_64-apple-darwin aarch64-apple-darwin aarch64-apple-ios x86_64-apple-ios aarch64-apple-ios-sim
           cargo install swift-bridge-cli
+      - name: Set Permissions
+        run: chmod +x build-release.sh package-release.sh
       - name: Build Release
         run: ./build-release.sh
       - name: List Release
