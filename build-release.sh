@@ -9,7 +9,9 @@ cd $THISDIR
 
 # Build the project for the desired platforms:
 cargo build --target x86_64-apple-darwin --release
+ls -lh ./target/x86_64-apple-darwin/release
 cargo build --target aarch64-apple-darwin --release
+ls -lh ./target/aarch64-apple-darwin/release
 mkdir -p ./target/universal-macos/release
 
 lipo \
