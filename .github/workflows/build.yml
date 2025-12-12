@@ -1,0 +1,32 @@
+name: Build and Tree
+
+on:
+  workflow_dispatch:
+  workflow_call:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust
+        run: rustup update stable
+      - name: Prepare Package
+        run: |
+          rustup target add x86_64-apple-darwin aarch64-apple-darwin aarch64-apple-ios x86_64-apple-ios aarch64-apple-ios-sim
+          cargo install swift-bridge-cli
+      - name: Build Release
+        run: ./build-release.sh
+      - name: List Release
+        run: find target -name "*.a" -exec ls -lh {} \;
+      - name: Package Release
+        run: ./package-release.sh
+      - name: List Package
+        run: ls -lh CCZUNISwiftBridge
+      - name: Archive Package
+        uses: actions/upload-artifact@v3
+        with:
+          name: CCZUNISwiftBridge
+          path: CCZUNISwiftBridge
