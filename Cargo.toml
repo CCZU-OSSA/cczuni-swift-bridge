@@ -11,9 +11,8 @@ crate-type = ["staticlib"]
 swift-bridge-build = "0.1"
 
 [dependencies]
-swift-bridge = "0.1"
+swift-bridge = {version = "0.1",features = ["async-support"]}
 cczuni = { path = "cczuni" }
-tokio = {version = "*", features = ["macros", "rt-multi-thread"]}
 
 # https://github.com/microsoft/edit/blob/main/Cargo.toml
 # We use `opt-level = "s"` as it significantly reduces binary size.
@@ -21,7 +20,7 @@ tokio = {version = "*", features = ["macros", "rt-multi-thread"]}
 # Unfortunately, that attribute currently doesn't work on intrinsics such as memset.
 [profile.release]
 codegen-units = 1           # reduces binary size by ~2%
-debug = "full"              # No one needs an undebuggable release binary
+debug = "none"
 lto = true                  # reduces binary size by ~14%
 opt-level = "s"             # reduces binary size by ~25%
 panic = "abort"             # reduces binary size by ~50% in combination with -Zbuild-std-features=panic_immediate_abort
