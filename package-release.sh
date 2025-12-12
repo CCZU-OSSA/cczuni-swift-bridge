@@ -1,7 +1,7 @@
 swift-bridge-cli create-package \
   --bridges-dir ./generated \
   --out-dir CCZUNISwiftBridge \
-  --ios target/aarch64-apple-ios/release/libcczuni-swift-bridge.a \
-  --simulator target/universal-ios/release/libcczuni-swift-bridge.a \
-  --macos target/universal-macos/release/libcczuni-swift-bridge.a \
+  --ios target/aarch64-apple-ios/release/libcczuni_swift_bridge.a \
+  --simulator target/universal-ios/release/libcczuni_swift_bridge.a \
+  --macos target/universal-macos/release/libcczuni_swift_bridge.a \
   --name CCZUNISwiftBridge
