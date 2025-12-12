@@ -11,7 +11,7 @@ crate-type = ["staticlib"]
 swift-bridge-build = "0.1"
 
 [dependencies]
-swift-bridge = {version = "0.1",features = ["async-support"]}
+swift-bridge = {version = "0.1",features = ["async"]}
 cczuni = { path = "cczuni" }
 
 # https://github.com/microsoft/edit/blob/main/Cargo.toml
