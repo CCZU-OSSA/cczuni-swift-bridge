@@ -13,6 +13,7 @@ swift-bridge-build = "0.1"
 [dependencies]
 swift-bridge = "0.1"
 cczuni = { path = "cczuni" }
+tokio = {version = "*", features = ["macros", "rt-multi-thread"]}
 
 # https://github.com/microsoft/edit/blob/main/Cargo.toml
 # We use `opt-level = "s"` as it significantly reduces binary size.

@@ -140,6 +140,7 @@ dependencies = [
  "cczuni",
  "swift-bridge",
  "swift-bridge-build",
+ "tokio",
 ]
 
 [[package]]
