@@ -28,9 +28,21 @@ jobs:
       - name: Package Release
         run: ./package-release.sh
       - name: List Package
-        run: ls -lh CCZUNISwiftBridge
+        run: ls -lh CCZUniSwift
+      - name: Push to CCZUniSwift Repository
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          mkdir ../cczuni-swift-temp
+          cd ../cczuni-swift-temp
+          git init
+          cp -r ../cczuni-swift-bridge/CCZUniSwift .
+          git add .
+          git commit -m "Update Swift package" || echo "No changes to commit"
+          git remote add origin https://x-access-token:${{ github.token }}@github.com/CCZU-OSSA/CCZUniSwift.git
+          git push -u origin main --force
       - name: Archive Package
         uses: actions/upload-artifact@v4
         with:
-          name: CCZUNISwiftBridge
-          path: CCZUNISwiftBridge
+          name: CCZUniSwift
+          path: CCZUniSwift
