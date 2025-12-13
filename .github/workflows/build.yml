@@ -36,6 +36,7 @@ jobs:
           mkdir ../cczuni-swift-temp
           cd ../cczuni-swift-temp
           git init
+          git branch -m main
           cp -r ../cczuni-swift-bridge/CCZUniSwift .
           git add .
           git commit -m "Update Swift package" || echo "No changes to commit"
