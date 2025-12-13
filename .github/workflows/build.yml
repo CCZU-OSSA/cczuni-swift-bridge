@@ -43,7 +43,8 @@ jobs:
           cd ../cczuni-swift-temp
           git init
           git branch -m main
-          cp -r ../cczuni-swift-bridge/CCZUniSwift .
+          # Copy contents of CCZUniSwift into repo root (avoid nesting the folder)
+          cp -r ../cczuni-swift-bridge/CCZUniSwift/. .
           git add .
           git commit -m "Update Swift package" || echo "No changes to commit"
           git remote add origin https://x-access-token:${CCZUNISWIFT_PAT}@github.com/CCZU-OSSA/CCZUniSwift.git
